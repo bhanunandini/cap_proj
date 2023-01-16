@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title><%= title %></title>
+</head>
+<body class="bg-gray-50">
+    <nav class="p-6" style="background-color: rgb(94, 92, 92); text-align: center;">
+        <div class="container flex flex-wrap items-center justify-between mx-auto ">
+          <a href="/" class="flex items-center ">
+            <span class="self-center text-xl font-semibold whitespace-nowrap text-white ">Digital-Voting-Application</span>
+          </a>
+        </div>
+    </nav>
+    <div class=" flex  text-gray-800 antialiased flex-col  overflow-hidden bg-gray-50 py-6 sm:py-12 px-20">
+        <div class="w-full">
+            <div class="flex justify-between">
+                <span class="text-4xl font-light "><%= title %></span>
+                
+            </div>
+            <div>
+                <% if (messages && messages.error && messages.error.length > 0) { %>
+                    <% for(var i=0; i<messages.error.length; i++) { %>
+                        <p class="bg-purple-100 my-3 list-none rounded-md px-4 py-2"><%= messages.error[i] %></p>
+                    <% } %>
+                <% } %>
+            </div>
+            <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+                <div class="h-2 bg-purple-400 rounded-t-md"></div>
+                <div class="divide-y divide-solid">
+                    <h2 class="px-4 py-2 text-2xl font-light ">Answer the below questions</h2>
+                    <div class="pb-2 px-8">
+                        <form action="/e/<%= urlString %>" method="post" class="divide-y divide-solid">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                            <ol class="list-decimal mb-5">
+                                <% for(let i=0; i<questions.length; i++) { %>
+                                    <li class="my-2">
+                                        <div class="px-2 py-1">
+                                            <h3 class="text-2xl my-2"><%= questions[i].question %></h3>
+                                            <p class="text-perple-800 text-md my-2"><%= questions[i].description %></p>
+                                        </div>
+                                        <div class="ml-8">
+                                            <ol class="list-none">
+                                                <% for(let j=0; j<options[i].length; j++) { %>
+                                                        <li class="option-item mt-2 cursor-pointer">
+                                                            <input type="radio" id="<%= options[i][j].id %>" class="cursor-pointer" name="q-<%= questions[i].id %>" value="<%= options[i][j].id %>">
+                                                            <label class="px-1 my-2 cursor-pointer" for="<%= options[i][j].id %>" class="ml-2 text-lg "><%= options[i][j].option %></label>
+                                                        </li>
+                                                <% } %>
+                                            </ol>
+                                        </div>
+                                    </li>
+                                <% } %>
+                            </ol>
+                            <div class="flex py-4">
+                                <button type="submit" class="text-white bg-blue-800 rounded w-fit px-4 py-1 hover:bg-blue-600 ml-2 ease-linear transition-all duration-150">
+                                    Submit vote
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

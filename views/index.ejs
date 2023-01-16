@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title><%= title %></title>
+  </head>
+  <body class="bg-gray-50">
+    <nav class="p-6" style="background-color: rgb(94, 92, 92); text-align: center;">
+      <div class="container flex flex-wrap items-center justify-between mx-auto ">
+        <a href="/" class="flex items-center ">
+          <span class="self-center text-xl font-semibold whitespace-nowrap text-white ">Digital-Voting-Application</span>
+        </a>
+      </div>
+    </nav>
+    <div class="flex flex-col justify-center items-center">
+      <p class="py-1 mb-6 text-4xl font-bold">Welcome to Online Voting</p>
+      <p class="text-Blue-600 text-2xl font-bold pt-4"> Admin Login</p>
+      <div class="flex flex-col justify-center items-center md:w-2/5 w-full">
+          <div class="flex flex-col justify-center pt-4 items-center pt-8 w-full">
+               Already have an account
+              <a class="bg-purple-600 border-2 border-red-800 flex justify-center hover:bg-blue-800 text-black font-bold p-1 rounded-lg " href="/login">Sign In</a>
+          </div>
+          <div class="flex flex-col justify-center pt-4 items-center w-full">
+               Are You a New User?
+              <a class="bg-purple-600 border-2 flex justify-center border-red-800 hover:bg-blue-800 text-black font-bold p-1 rounded-lg" href="/signup">Sign Up</a>
+          </div>
+  </body>
+</html>

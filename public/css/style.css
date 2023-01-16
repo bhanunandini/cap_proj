@@ -1,0 +1,11 @@
+body {
+  font-family: sans-serif;
+  background: white;
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: rgba(94, 92, 92, 0.596);;
+  color: white;
+}
